@@ -1,5 +1,5 @@
 /*
- * jQuery slugIt plug-in 1.0
+ * jQuery slugIt plug-in 1.1
  *
  * Copyright (c) 2010 Diego Kuperman
  *

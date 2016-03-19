@@ -13,6 +13,8 @@ I've taken some chars tables from Django admin urlify.js
 (http://code.djangoproject.com/browser/django/trunk/django/contrib/admin/media/js/urlify.js)
 as this one was the most similar aproach to what I was looking to implement over jQuery.
 
+This fork of the plugin adds the ability to have multiple source text fields. See below for examples.
+
 Requirements
 ============
 
@@ -41,6 +43,23 @@ Then, you select the source field to be converted::
     </script>
 
 "I love my umbrella'" will be converted to "i-love-my-umbrella"
+
+When there are two fields, the syntax follow jQuery norms.
+
+    <form>
+        <input type="text" id="first_name"/>
+        <input type="text" id="last_name"/>
+        <input type="text" id="slug"/>
+    </form>
+
+    <script>
+        $(function(){
+            $('#first_name, #last_name').slugIt();
+        });
+    </script>
+
+"John" and "Smith" will be converted to "john-smith"
+
 
 Options
 -------
@@ -89,4 +108,3 @@ Working examples can be found at http://github.com/diegok/slugit-jquery/tree/mas
 Licensing
 ---------
 BSD License can be found at http://www.opensource.org/licenses/bsd-license.php
-
