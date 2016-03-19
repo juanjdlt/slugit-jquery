@@ -36,39 +36,53 @@ jQuery.fn.slugIt = function(options) {
         chars = jQuery.extend(chars, opts.map);
     }
 
-    jQuery(this).bind(defaults.events, function() {
-        var text = jQuery(this).val();
+    var sourceElements = this;
 
-        if ( opts.before ) text = opts.before(text);
-        text = jQuery.trim(text.toString());
-
-        var slug = new String();
-        for (var i = 0; i < text.length; i++) {
-            if ( chars[text.charAt(i)] ) { slug += chars[text.charAt(i)] }
-            else                         { slug += text.charAt(i) }
-        }
-
-        // Ensure separator is composable into regexes
-        var sep_esc  = opts.separator.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
-        var re_trail = new RegExp('^'+ sep_esc +'+|'+ sep_esc +'+$', 'g');
-        var re_multi = new RegExp(sep_esc +'+', 'g');
-
-        slug = slug.replace(/[^-\w\d\$\*\(\)\'\!\_]/g, opts.separator);  // swap spaces and unwanted chars
-        slug = slug.replace(re_trail, '');                               // trim leading/trailing separators
-        slug = slug.replace(re_multi, opts.separator);                   // eliminate repeated separatos
-        slug = slug.toLowerCase();                                       // convert sting to lower case
-
-        if ( opts.after ) slug = opts.after(slug);
-
-        if ( typeof opts.output == "function" ) {
-          opts.output(slug)
-        } else {
-          jQuery(opts.output).val(slug);         // input or textarea
-          jQuery(opts.output).html(slug);        // other dom elements
-        }
-
-        return this;
+    jQuery(sourceElements).bind(defaults.events, function() {
+      return generateSlug();
     });
+
+    function getSourceText() {
+      sourceText = sourceElements.map(function() {
+                return $(this).val();
+              }).get().join(' ');
+
+      return sourceText;
+  	}
+
+    function generateSlug() {
+      var text = getSourceText();
+
+      if ( opts.before ) text = opts.before(text);
+      text = jQuery.trim(text.toString());
+
+      var slug = new String();
+      for (var i = 0; i < text.length; i++) {
+          if ( chars[text.charAt(i)] ) { slug += chars[text.charAt(i)] }
+          else                         { slug += text.charAt(i) }
+      }
+
+      // Ensure separator is composable into regexes
+      var sep_esc  = opts.separator.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+      var re_trail = new RegExp('^'+ sep_esc +'+|'+ sep_esc +'+$', 'g');
+      var re_multi = new RegExp(sep_esc +'+', 'g');
+
+      slug = slug.replace(/[^-\w\d\$\*\(\)\'\!\_]/g, opts.separator);  // swap spaces and unwanted chars
+      slug = slug.replace(re_trail, '');                               // trim leading/trailing separators
+      slug = slug.replace(re_multi, opts.separator);                   // eliminate repeated separatos
+      slug = slug.toLowerCase();                                       // convert sting to lower case
+
+      if ( opts.after ) slug = opts.after(slug);
+
+      if ( typeof opts.output == "function" ) {
+        opts.output(slug)
+      } else {
+        jQuery(opts.output).val(slug);         // input or textarea
+        jQuery(opts.output).html(slug);        // other dom elements
+      }
+
+      return this;
+    }
 
     function latin_map() {
         return {
@@ -172,4 +186,4 @@ jQuery.fn.slugIt = function(options) {
     }
 
   return this;
-}
+};
