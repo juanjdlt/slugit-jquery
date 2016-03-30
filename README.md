@@ -1,6 +1,6 @@
 # slugIt - a jQuery slugs generator plugin
 
-[Diego Kuperman](https://github.com/diegok/slugit-jquery) created slugit-jquery to convert european utf8 chars plus some symbols and easily extensible for custom extra mappings.
+[Diego Kuperman](https://github.com/diegok/slugit-jquery) created slugit-jquery to convert european utf8 chars plus some symbols and to be easily extensible for custom extra mappings.
 
 None of the ones listed on http://plugins.jquery.com/plugin-tags/slug did what he wanted.
 
