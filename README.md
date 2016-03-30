@@ -1,17 +1,15 @@
-# slugIt - just another jQuery slugs generator plugin
+# slugIt - a jQuery slugs generator plugin
 
-I've created this one because I wanted a jQuery slug plugin capable of convert
-european utf8 chars plus some symbols and easily extensible for custom extra mappings.
-None of the ones listed on http://plugins.jquery.com/plugin-tags/slug does what I needed.
+[Diego Kuperman](https://github.com/diegok/slugit-jquery) created slugit-jquery to convert european utf8 chars plus some symbols and easily extensible for custom extra mappings.
 
-I got the idea of this plugin after using the excelent perl module Text::Unidecode
-(http://search.cpan.org/dist/Text-Unidecode/) for this same task server side.
+None of the ones listed on http://plugins.jquery.com/plugin-tags/slug did what he wanted.
 
-I've taken some chars tables from Django admin urlify.js
-(http://code.djangoproject.com/browser/django/trunk/django/contrib/admin/media/js/urlify.js)
-as this one was the most similar aproach to what I was looking to implement over jQuery.
+The idea can from the excelent perl module [Text::Unidecode](http://search.cpan.org/dist/Text-Unidecode/) which is used for the the same task on the server side.
 
-This fork of the plugin adds the ability to have multiple source text fields. See below for examples.
+The chars tables came from [Django admin urlify.js](http://code.djangoproject.com/browser/django/trunk/django/contrib/admin/media/js/urlify.js)
+as this used a similar approach to what he wanted to implement in jQuery.
+
+This fork adds the ability to have multiple source text fields. See below for examples.
 
 ## Requirements
 
@@ -113,7 +111,7 @@ Working examples can be found at http://github.com/radionewzealand/slugit-jquery
 
 ## Pull Requests
 
-I will consider pull requests to fix bugs, or add new character sets. Also tests, if anyone feels inspired.
+Pull requests to fix bugs or add new character sets would be appreciated. Also tests, if anyone feels inspired.
 
 ## Licensing
 
